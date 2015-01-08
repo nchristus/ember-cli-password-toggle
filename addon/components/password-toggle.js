@@ -2,14 +2,19 @@ import Ember from 'ember';
 
 export default Ember.Component.extend({
     didInsertElement: function() {
-        $('.ember-password-toggle-btn').on('click', function(){
+        $('button').on('click', function(){
           var text = $(this).text();
+          var $parent = $(this).parent();
+          var $input = $('input', $parent).clone();
+
+          $('input', $parent).remove();
+
           if (text === 'Show') {
             $(this).text('Hide');
-            $('#ember-password-toggle-input').attr("type", "text");
+            $input.attr("type", "text").appendTo($parent);
           } else if (text === 'Hide') {
             $(this).text('Show');
-            $('#ember-password-toggle-input').attr("type", "password");
+            $input.attr("type", "password").appendTo($parent);
           }
         });
     }
