@@ -16,7 +16,7 @@ module('password toggle acceptance tests', {
 test("password-toggle test", function() {
     visit('/');
     andThen(function(){
-        equal(find('input#ember-password-toggle-input').attr('type'), 'password');
+        equal(find('input.ember-password-toggle-input').attr('type'), 'password');
         equal(find('button.ember-password-toggle-btn').text(), 'Show');
         equal(find('button.ember-password-toggle-btn').attr('type'), 'button');
         equal(find('button.ember-password-toggle-btn').attr('tabindex'), '-1');
@@ -25,12 +25,12 @@ test("password-toggle test", function() {
     click('button.ember-password-toggle-btn');
     andThen(function(){
         equal(find('button.ember-password-toggle-btn').text(), 'Hide');
-        equal(find('input#ember-password-toggle-input').attr('type'), 'text');
+        equal(find('input.ember-password-toggle-input').attr('type'), 'text');
     });
 
     click('button.ember-password-toggle-btn');
     andThen(function(){
         equal(find('button.ember-password-toggle-btn').text(), 'Show');
-        equal(find('input#ember-password-toggle-input').attr('type'), 'password');
+        equal(find('input.ember-password-toggle-input').attr('type'), 'password');
     });
 });
