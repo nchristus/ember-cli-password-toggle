@@ -15,7 +15,7 @@ $ npm install ember-cli-password-toggle --save-dev
 ## Password Toggle
 
 ```
-{{password-toggle value=model.password}}
+{{password-toggle password=model.password}}
 ```
 
 ## Running the unit tests
