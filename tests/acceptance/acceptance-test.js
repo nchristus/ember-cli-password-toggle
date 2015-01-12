@@ -34,3 +34,10 @@ test("password-toggle test", function() {
         equal(find('input.ember-password-toggle-input').attr('type'), 'password');
     });
 });
+
+test("password-toggle input is bound to the value", function() {
+    visit('/');
+    andThen(function() {
+        equal(find('input.ember-password-toggle-input').val(), 'abc123');
+    });
+});
