@@ -1,25 +1,33 @@
-# Ember-cli-password-toggle
+# ember-cli-password-toggle
 
-This README outlines the details of collaborating on this Ember addon.
+[![Build Status][]](https://travis-ci.org/toranb/ember-cli-password-toggle)
+[![NPM Downlaads](https://img.shields.io/npm/dm/ember-cli-password-toggle.svg)](https://www.npmjs.org/package/ember-cli-password-toggle)
+
+## Description
+Ember-cli-password-toggle is an ember component that provides an easy way to show and hide a password via a toggle button.
 
 ## Installation
+```
+# install via npm
+$ npm install ember-cli-password-toggle --save-dev
+```
 
-* `git clone` this repository
-* `npm install`
-* `bower install`
+## Password Toggle
 
-## Running
+```
+{{password-toggle value=model.password}}
+```
 
-* `ember server`
-* Visit your app at http://localhost:4200.
+## Running the unit tests
 
-## Running Tests
+    npm install
+    ember test
 
-* `ember test`
-* `ember test --server`
+## License
 
-## Building
+Copyright © 2015 Nick Christus
 
-* `ember build`
+Licensed under the MIT License
 
-For more information on using ember-cli, visit [http://www.ember-cli.com/](http://www.ember-cli.com/).
+
+[Build Status]: https://secure.travis-ci.org/nchristus/ember-cli-password-toggle.png?branch=master
