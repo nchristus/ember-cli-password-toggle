@@ -1,6 +1,6 @@
 # ember-cli-password-toggle
 
-[![Build Status][]](https://travis-ci.org/toranb/ember-cli-password-toggle)
+[![Build Status][]](https://travis-ci.org/nchristus/ember-cli-password-toggle)
 [![NPM Downlaads](https://img.shields.io/npm/dm/ember-cli-password-toggle.svg)](https://www.npmjs.org/package/ember-cli-password-toggle)
 
 ## Description
