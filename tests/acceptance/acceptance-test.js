@@ -17,6 +17,7 @@ test("password-toggle test", function() {
     visit('/');
     andThen(function(){
         equal(find('input.ember-password-toggle-input').attr('type'), 'password');
+        ok(find('input.ember-password-toggle-input').hasClass('text-input'));
         equal(find('button.ember-password-toggle-btn').text(), 'Show');
         equal(find('button.ember-password-toggle-btn').attr('type'), 'button');
         equal(find('button.ember-password-toggle-btn').attr('tabindex'), '-1');
