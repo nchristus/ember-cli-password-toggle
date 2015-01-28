@@ -1,9 +1,8 @@
 {
   "name": "ember-cli-password-toggle",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "Easily show and hide password via a toggle button.",
   "directories": {
-    "doc": "doc",
     "test": "tests"
   },
   "scripts": {
@@ -11,11 +10,17 @@
     "build": "ember build",
     "test": "ember test"
   },
-  "repository": "",
+  "repository": {
+      "type": "git",
+      "url": "https://github.com/nchristus/ember-cli-password-toggle"
+  },
+  "bugs": {
+      "url": "https://github.com/nchristus/ember-cli-password-toggle/issues"
+  },
   "engines": {
     "node": ">= 0.10.0"
   },
-  "author": "",
+  "author": "Nick Christus",
   "license": "MIT",
   "devDependencies": {
     "bower": "^1.3.12",
@@ -32,7 +37,11 @@
     "glob": "^4.0.5"
   },
   "keywords": [
-    "ember-addon"
+    "ember-addon",
+    "ember",
+    "ember-cli",
+    "password",
+    "toggle"
   ],
   "ember-addon": {
     "configPath": "tests/dummy/config"
