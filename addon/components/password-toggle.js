@@ -2,7 +2,7 @@ import Ember from 'ember';
 
 export default Ember.Component.extend({
     didInsertElement: function() {
-        $('button').on('click', function() {
+        this.$('button').on('click', function() {
             var text = $(this).text();
             var $input = $(this).parent().find('input');
 
@@ -18,7 +18,13 @@ export default Ember.Component.extend({
             this.$('input').focus();
         }
     },
-    classes: function() {
-        return 'ember-password-toggle-input text-input' + ' ' + this.get('clazz');
+    wrapperClazz: function() {
+        return 'ember-password-toggle-wrapper ' + this.get('wrapperClass');
+    }.property(),
+    buttonClazz: function() {
+        return 'ember-password-toggle-btn ' + this.get('buttonClass');
+    }.property(),
+    inputClazz: function() {
+        return 'ember-password-toggle-input ' + this.get('inputClass') ;
     }.property()
 });
