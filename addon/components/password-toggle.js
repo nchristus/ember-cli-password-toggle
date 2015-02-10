@@ -19,6 +19,6 @@ export default Ember.Component.extend({
         }
     },
     classes: function() {
-        return 'ember-password-toggle-input text-input' + ' ' + this.get('class');
+        return 'ember-password-toggle-input text-input' + ' ' + this.get('clazz');
     }.property()
 });

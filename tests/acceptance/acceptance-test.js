@@ -43,6 +43,7 @@ test('password-toggle test', function() {
 test('password-toggle allows custom classes to passed in', function() {
     visit('/');
     andThen(function() {
+        equal(find('.password').length, 1);
         equal(find(PASSWORD_INPUT).hasClass('password'), true);
         equal(find(PASSWORD_INPUT).hasClass('wat'), true);
     });
