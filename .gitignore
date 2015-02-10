@@ -8,10 +8,14 @@
 /node_modules
 /bower_components
 
-# test output
-/coverage
-
 # misc
+/.sass-cache
+/connect.lock
+/coverage/*
+/libpeerconnection.log
+npm-debug.log
+testem.log
+
 .*
 *.lock
 *.log

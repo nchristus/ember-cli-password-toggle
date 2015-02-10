@@ -2,7 +2,13 @@
   "predef": [
     "document",
     "window",
-    "-Promise"
+    "-Promise",
+    "$",
+    "find",
+    "andThen",
+    "click",
+    "ok",
+    "equal"
   ],
   "browser": true,
   "boss": true,

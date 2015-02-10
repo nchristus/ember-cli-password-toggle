@@ -18,9 +18,16 @@ $ npm install ember-cli-password-toggle --save-dev
 {{password-toggle password=model.password}}
 ```
 
+Optionally you can pass your custom classes and focus=true to set the focus on the password input.
+
+```
+{{password-toggle password=model.password class="my-class" focus=true}}
+```
+
 ## Running the unit tests
 
     npm install
+    bower install
     ember test
 
 ## License
