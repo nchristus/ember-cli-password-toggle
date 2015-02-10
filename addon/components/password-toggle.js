@@ -14,5 +14,11 @@ export default Ember.Component.extend({
                 $input.attr('type', 'password');
             }
         });
-    }
+        if(this.get('focus')) {
+            this.$('input').focus();
+        }
+    },
+    classes: function() {
+        return 'ember-password-toggle-input text-input' + ' ' + this.get('class');
+    }.property()
 });
