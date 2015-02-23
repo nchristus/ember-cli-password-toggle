@@ -44,7 +44,15 @@ test('password-toggle test', function() {
     });
 });
 
-test('password-toggle allows custom classes to passed in', function() {
+test('password-toggle allows custom tabindex to be passed in', function() {
+    visit('/');
+    andThen(function() {
+        equal(find(PASSWORD_INPUT_TWO).attr('tabindex'), 3);
+        equal(find(PASSWORD_INPUT_ONE).attr('tabindex'), undefined);
+    });
+});
+
+test('password-toggle allows custom classes to be passed in', function() {
     visit('/');
     andThen(function() {
         equal(find('.password1').length, 1);
