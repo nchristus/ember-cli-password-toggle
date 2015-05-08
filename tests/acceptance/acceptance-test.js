@@ -46,6 +46,14 @@ test('password-toggle test', function(assert) {
     });
 });
 
+test('password-toggle allows custom inputId to be passed in', function(assert) {
+    visit('/');
+    andThen(function() {
+        assert.ok(find(PASSWORD_INPUT_ONE).attr('id') !== 'password');
+        assert.equal(find(PASSWORD_INPUT_TWO).attr('id'), 'password');
+    });
+});
+
 test('password-toggle allows custom tabindex to be passed in', function(assert) {
     visit('/');
     andThen(function() {
