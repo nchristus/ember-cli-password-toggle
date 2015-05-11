@@ -49,7 +49,7 @@ test('password-toggle test', function(assert) {
 test('password-toggle allows custom inputId to be passed in', function(assert) {
     visit('/');
     andThen(function() {
-        assert.ok(find(PASSWORD_INPUT_ONE).attr('id') !== 'password');
+        assert.ok(find(PASSWORD_INPUT_ONE).attr('id').indexOf('ember') > -1);
         assert.equal(find(PASSWORD_INPUT_TWO).attr('id'), 'password');
     });
 });
