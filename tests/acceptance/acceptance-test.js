@@ -1,7 +1,8 @@
 import Ember from 'ember';
-import { test } from 'ember-qunit';
+import { test, module } from 'qunit';
 import startApp from '../helpers/start-app';
-import {isFocused, isTextInput, isPasswordInput} from 'ember-cli-test-helpers/tests/helpers/input';
+import {isFocused, isTextInput, isPasswordInput} from '../helpers/input';
+import lookup from '../helpers/lookup';
 
 var application;
 
@@ -15,59 +16,68 @@ var PASSWORD_WRAPPER_TWO = 'div.ember-password-toggle-wrapper:eq(1)';
 module('password toggle acceptance tests', {
     setup: function() {
         application = startApp();
+        var applicationRoute = lookup('route:application');
     },
     teardown: function() {
         Ember.run(application, application.destroy);
     }
 });
 
-test('password-toggle test', function() {
+test('password-toggle test', function(assert) {
     visit('/');
     andThen(function(){
-        equal(find(PASSWORD_INPUT_ONE).attr('type'), 'password');
-        ok(find(PASSWORD_INPUT_ONE).hasClass('text-input'));
-        equal(find(PASSWORD_BUTTON_ONE).text(), 'Show');
-        equal(find(PASSWORD_BUTTON_ONE).attr('type'), 'button');
-        equal(find(PASSWORD_BUTTON_ONE).attr('tabindex'), '-1');
+        assert.equal(find(PASSWORD_INPUT_ONE).attr('type'), 'password');
+        assert.ok(find(PASSWORD_INPUT_ONE).hasClass('text-input'));
+        assert.equal(find(PASSWORD_BUTTON_ONE).text(), 'Show');
+        assert.equal(find(PASSWORD_BUTTON_ONE).attr('type'), 'button');
+        assert.equal(find(PASSWORD_BUTTON_ONE).attr('tabindex'), '-1');
     });
 
     click(PASSWORD_BUTTON_ONE);
     andThen(function(){
-        equal(find(PASSWORD_BUTTON_ONE).text(), 'Hide');
-        equal(find(PASSWORD_INPUT_ONE).attr('type'), 'text');
+        assert.equal(find(PASSWORD_BUTTON_ONE).text(), 'Hide');
+        assert.equal(find(PASSWORD_INPUT_ONE).attr('type'), 'text');
     });
 
     click(PASSWORD_BUTTON_ONE);
     andThen(function(){
-        equal(find(PASSWORD_BUTTON_ONE).text(), 'Show');
-        equal(find(PASSWORD_INPUT_ONE).attr('type'), 'password');
+        assert.equal(find(PASSWORD_BUTTON_ONE).text(), 'Show');
+        assert.equal(find(PASSWORD_INPUT_ONE).attr('type'), 'password');
     });
 });
 
-test('password-toggle allows custom tabindex to be passed in', function() {
+test('password-toggle allows custom inputId to be passed in', function(assert) {
     visit('/');
     andThen(function() {
-        equal(find(PASSWORD_INPUT_TWO).attr('tabindex'), 3);
-        equal(find(PASSWORD_INPUT_ONE).attr('tabindex'), undefined);
+        assert.ok(find(PASSWORD_INPUT_ONE).attr('id').indexOf('ember') > -1);
+        assert.equal(find(PASSWORD_INPUT_TWO).attr('id'), 'password');
     });
 });
 
-test('password-toggle allows custom classes to be passed in', function() {
+test('password-toggle allows custom tabindex to be passed in', function(assert) {
     visit('/');
     andThen(function() {
-        equal(find('.password1').length, 1);
-        equal(find(PASSWORD_INPUT_ONE).hasClass('password1'), true);
-        equal(find(PASSWORD_INPUT_ONE).hasClass('text-input'), true);
-        equal(find(PASSWORD_INPUT_TWO).hasClass('confirm-password2'), true);
-        equal(find(PASSWORD_INPUT_TWO).hasClass('text-input'), true);
-        equal(find(PASSWORD_BUTTON_ONE).hasClass('buttonPassword1'), true);
-        equal(find(PASSWORD_BUTTON_TWO).hasClass('buttonPassword2'), true);
-        equal(find(PASSWORD_WRAPPER_ONE).hasClass('wrapperPassword1'), true);
-        equal(find(PASSWORD_WRAPPER_TWO).hasClass('wrapperPassword2'), true);
+        assert.equal(find(PASSWORD_INPUT_TWO).attr('tabindex'), 3);
+        assert.equal(find(PASSWORD_INPUT_ONE).attr('tabindex'), undefined);
     });
 });
 
-test('password-toggle will show and hide the password when clicking the SHOW/HIDE button', function() {
+test('password-toggle allows custom classes to be passed in', function(assert) {
+    visit('/');
+    andThen(function() {
+        assert.equal(find('.password1').length, 1);
+        assert.equal(find(PASSWORD_INPUT_ONE).hasClass('password1'), true);
+        assert.equal(find(PASSWORD_INPUT_ONE).hasClass('text-input'), true);
+        assert.equal(find(PASSWORD_INPUT_TWO).hasClass('confirm-password2'), true);
+        assert.equal(find(PASSWORD_INPUT_TWO).hasClass('text-input'), true);
+        assert.equal(find(PASSWORD_BUTTON_ONE).hasClass('buttonPassword1'), true);
+        assert.equal(find(PASSWORD_BUTTON_TWO).hasClass('buttonPassword2'), true);
+        assert.equal(find(PASSWORD_WRAPPER_ONE).hasClass('wrapperPassword1'), true);
+        assert.equal(find(PASSWORD_WRAPPER_TWO).hasClass('wrapperPassword2'), true);
+    });
+});
+
+test('password-toggle will show and hide the password when clicking the SHOW/HIDE button', function(assert) {
     visit('/');
     andThen(function() {
         isPasswordInput('input.password1');
@@ -89,31 +99,28 @@ test('password-toggle allows focus to be set', function() {
     });
 });
 
-test('password-toggle input remains bound to the model', function() {
+test('password-toggle input remains bound to the model', function(assert) {
+    var model;
     visit('/');
-    var model = application.__container__.lookup('route:application').currentModel;
-
-    Ember.run(function() {
+    andThen(function(){
+        model = lookup('route:application').currentModel;
         model.set('password', 'A');
     });
     andThen(function() {
-        equal(find(PASSWORD_INPUT_ONE).val(), 'A');
+        assert.equal(find(PASSWORD_INPUT_ONE).val(), 'A');
     });
-
     fillIn(PASSWORD_INPUT_ONE, 'B');
     andThen(function() {
-        equal(model.get('password'), 'B');
+        assert.equal(model.get('password'), 'B');
     });
-
     click(PASSWORD_BUTTON_ONE);
     fillIn(PASSWORD_INPUT_ONE, 'C');
     andThen(function() {
-        equal(model.get('password'), 'C');
+        assert.equal(model.get('password'), 'C');
     });
-
     click(PASSWORD_BUTTON_ONE);
     fillIn(PASSWORD_INPUT_ONE, 'D');
     andThen(function() {
-        equal(model.get('password'), 'D');
+        assert.equal(model.get('password'), 'D');
     });
 });
