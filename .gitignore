@@ -16,6 +16,12 @@
 npm-debug.log
 testem.log
 
+# intellin
+.idea
+*.iml
+*.ipr
+*.iws
+
 .*
 *.lock
 *.log
