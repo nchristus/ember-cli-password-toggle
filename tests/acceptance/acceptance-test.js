@@ -2,7 +2,6 @@ import Ember from 'ember';
 import { test, module } from 'qunit';
 import startApp from '../helpers/start-app';
 import {isFocused, isTextInput, isPasswordInput} from '../helpers/input';
-import lookup from '../helpers/lookup';
 
 var application;
 
@@ -16,7 +15,7 @@ var PASSWORD_WRAPPER_TWO = 'div.ember-password-toggle-wrapper:eq(1)';
 module('password toggle acceptance tests', {
     setup: function() {
         application = startApp();
-        var applicationRoute = lookup('route:application');
+        var applicationRoute = application.__container__.lookup('route:application');
     },
     teardown: function() {
         Ember.run(application, application.destroy);
@@ -103,7 +102,7 @@ test('password-toggle input remains bound to the model', function(assert) {
     var model;
     visit('/');
     andThen(function(){
-        model = lookup('route:application').currentModel;
+        model = application.__container__.lookup('route:application').currentModel;
         model.set('password', 'A');
     });
     andThen(function() {
