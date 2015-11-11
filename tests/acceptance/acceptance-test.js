@@ -7,6 +7,7 @@ var application;
 
 var PASSWORD_INPUT_ONE = 'input.ember-password-toggle-input:eq(0)';
 var PASSWORD_INPUT_TWO = 'input.ember-password-toggle-input:eq(1)';
+var PASSWORD_INPUT_THREE = 'input.ember-password-toggle-input:eq(2)';
 var PASSWORD_BUTTON_ONE = 'button.ember-password-toggle-btn:eq(0)';
 var PASSWORD_BUTTON_TWO = 'button.ember-password-toggle-btn:eq(1)';
 var PASSWORD_WRAPPER_ONE = 'div.ember-password-toggle-wrapper:eq(0)';
@@ -15,11 +16,27 @@ var PASSWORD_WRAPPER_TWO = 'div.ember-password-toggle-wrapper:eq(1)';
 module('password toggle acceptance tests', {
     setup: function() {
         application = startApp();
-        var applicationRoute = application.__container__.lookup('route:application');
     },
     teardown: function() {
         Ember.run(application, application.destroy);
     }
+});
+
+test('password toggle triggers action on enter', function(assert) {
+    visit('/');
+
+    andThen(function(){
+        assert.equal(find("#action-triggered").length, 0);
+    });
+
+    fillIn(PASSWORD_INPUT_THREE, "foo");
+
+    keyEvent(PASSWORD_INPUT_THREE, "keypress", 13);
+
+    andThen(function(){
+        assert.equal(find("#action-triggered").length, 1);
+    });
+
 });
 
 test('password-toggle test', function(assert) {

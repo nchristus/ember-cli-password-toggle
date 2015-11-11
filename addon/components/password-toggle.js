@@ -20,6 +20,11 @@ export default Ember.Component.extend({
             this.$('input').focus();
         }
     },
+    keyPress: function(event){
+        if(event.keyCode === 13) {
+            this.sendAction("action");
+        }
+    },
     wrapperClazz: Ember.computed(function() {
         return 'ember-password-toggle-wrapper ' + this.get('wrapperClass');
     }),
