@@ -25,9 +25,10 @@ Optionally you set:
   - inputClass
  - inputId
  - focus=true
+ - autocomplete
 
 ```
-{{password-toggle password=model.password inputId="input-id" wrapperClass="outerDivClass" buttonClass="buttonCustomClass" inputClass="inputCustomClass" focus=true}}
+{{password-toggle password=model.password inputId="input-id" wrapperClass="outerDivClass" buttonClass="buttonCustomClass" inputClass="inputCustomClass" focus=true autocomplete="autocomplete"}}
 ```
 
 ## Running the unit tests
@@ -38,7 +39,7 @@ Optionally you set:
 
 ## License
 
-Copyright © 2015 Nick Christus
+Copyright © 2016 Nick Christus
 
 Licensed under the MIT License
 

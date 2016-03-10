@@ -78,6 +78,14 @@ test('password-toggle allows custom tabindex to be passed in', function(assert) 
     });
 });
 
+test('password-toggle allows custom autocomplete to be passed in', function(assert) {
+    visit('/');
+    andThen(function() {
+        assert.equal(find(PASSWORD_INPUT_ONE).attr('autocomplete'), 'new-password');
+        assert.equal(find(PASSWORD_INPUT_TWO).attr('autocomplete'), undefined);
+    });
+});
+
 test('password-toggle allows custom classes to be passed in', function(assert) {
     visit('/');
     andThen(function() {
