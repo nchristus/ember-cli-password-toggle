@@ -1,6 +1,6 @@
 {
   "name": "ember-cli-password-toggle",
-  "version": "1.5.1",
+  "version": "1.6.0",
   "description": "Easily show and hide password via a toggle button.",
   "directories": {
     "test": "tests"
