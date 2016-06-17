@@ -78,6 +78,14 @@ test('password-toggle allows custom tabindex to be passed in', function(assert) 
     });
 });
 
+test('xxx password-toggle allows custom maxlength to be passed in', function(assert) {
+    visit('/');
+    andThen(function() {
+        assert.equal(find(PASSWORD_INPUT_TWO).attr('maxlength'), 10);
+        assert.equal(find(PASSWORD_INPUT_ONE).attr('maxlength'), undefined);
+    });
+});
+
 test('password-toggle allows custom autocomplete to be passed in', function(assert) {
     visit('/');
     andThen(function() {
