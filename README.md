@@ -7,14 +7,14 @@
 Ember-cli-password-toggle is an ember component that provides an easy way to show and hide a password via a toggle button.
 
 ## Installation
-```
+```sh
 # install via npm
 $ npm install ember-cli-password-toggle --save-dev
 ```
 
 ## Password Toggle
 
-```
+```hbs
 {{password-toggle password=model.password}}
 ```
 
@@ -27,15 +27,16 @@ Optionally you set:
  - focus=true
  - autocomplete
 
-```
+```hbs
 {{password-toggle password=model.password inputId="input-id" wrapperClass="outerDivClass" buttonClass="buttonCustomClass" inputClass="inputCustomClass" focus=true autocomplete="autocomplete"}}
 ```
 
 ## Running the unit tests
-
-    npm install
-    bower install
-    ember test
+```sh
+npm install
+bower install
+ember test
+```
 
 ## License
 
