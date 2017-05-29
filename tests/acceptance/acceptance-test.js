@@ -53,12 +53,20 @@ test('password-toggle test', function(assert) {
     andThen(function(){
         assert.equal(find(PASSWORD_BUTTON_ONE).text(), 'Hide');
         assert.equal(find(PASSWORD_INPUT_ONE).attr('type'), 'text');
+        assert.equal(find(PASSWORD_INPUT_ONE).attr('autocomplete'), 'off');
+        assert.equal(find(PASSWORD_INPUT_ONE).attr('autocorrect'), 'off');
+        assert.equal(find(PASSWORD_INPUT_ONE).attr('spellcheck'), 'off');
+        assert.equal(find(PASSWORD_INPUT_ONE).attr('autocapitalize'), 'off');
     });
 
     click(PASSWORD_BUTTON_ONE);
     andThen(function(){
         assert.equal(find(PASSWORD_BUTTON_ONE).text(), 'Show');
         assert.equal(find(PASSWORD_INPUT_ONE).attr('type'), 'password');
+        assert.equal(find(PASSWORD_INPUT_ONE).attr('autocomplete'), undefined);
+        assert.equal(find(PASSWORD_INPUT_ONE).attr('autocorrect'), undefined);
+        assert.equal(find(PASSWORD_INPUT_ONE).attr('spellcheck'), undefined);
+        assert.equal(find(PASSWORD_INPUT_ONE).attr('autocapitalize'), undefined);
     });
 });
 
@@ -78,19 +86,11 @@ test('password-toggle allows custom tabindex to be passed in', function(assert) 
     });
 });
 
-test('xxx password-toggle allows custom maxlength to be passed in', function(assert) {
+test('password-toggle allows custom maxlength to be passed in', function(assert) {
     visit('/');
     andThen(function() {
         assert.equal(find(PASSWORD_INPUT_TWO).attr('maxlength'), 10);
         assert.equal(find(PASSWORD_INPUT_ONE).attr('maxlength'), undefined);
-    });
-});
-
-test('password-toggle allows custom autocomplete to be passed in', function(assert) {
-    visit('/');
-    andThen(function() {
-        assert.equal(find(PASSWORD_INPUT_ONE).attr('autocomplete'), 'new-password');
-        assert.equal(find(PASSWORD_INPUT_TWO).attr('autocomplete'), undefined);
     });
 });
 
