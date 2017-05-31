@@ -11,6 +11,9 @@ export default Ember.Component.extend({
             if (text === 'Show') {
                 $(this).text('Hide');
                 $input.attr('type', 'text');
+                $input.attr('autocomplete', 'off');
+                $input.attr('autocapitalize', 'off');
+                $input.attr('spellcheck', 'false');
             } else if (text === 'Hide') {
                 $(this).text('Show');
                 $input.attr('type', 'password');
