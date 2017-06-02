@@ -25,11 +25,14 @@ Optionally you set:
   - inputClass
  - inputId
  - focus=true
- - autocomplete
 
 ```hbs
-{{password-toggle password=model.password inputId="input-id" wrapperClass="outerDivClass" buttonClass="buttonCustomClass" inputClass="inputCustomClass" focus=true autocomplete="autocomplete"}}
+{{password-toggle password=model.password inputId="input-id" wrapperClass="outerDivClass" buttonClass="buttonCustomClass" inputClass="inputCustomClass" focus=true}}
 ```
+
+## Migrating from Version 1.x to 2.x
+
+In order to prevent browsers from storing passwords when 'SHOW' is toggled, the plugin has been changed to automatically set the autocomplete value to 'off' when displaying the password in the clear.
 
 ## Running the unit tests
 ```sh

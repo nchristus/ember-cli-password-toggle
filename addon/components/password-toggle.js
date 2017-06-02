@@ -10,9 +10,17 @@ export default Ember.Component.extend({
 
             if (text === 'Show') {
                 $(this).text('Hide');
+                $input.attr('autocomplete', 'off');
+                $input.attr('autocorrect', 'off');
+                $input.attr('spellcheck', 'off');
+                $input.attr('autocapitalize', 'off');
                 $input.attr('type', 'text');
             } else if (text === 'Hide') {
                 $(this).text('Show');
+                $input.removeAttr('autocomplete');
+                $input.removeAttr('autocorrect');
+                $input.removeAttr('spellcheck');
+                $input.removeAttr('autocapitalize');
                 $input.attr('type', 'password');
             }
         });
