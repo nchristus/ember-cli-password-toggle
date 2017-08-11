@@ -33,13 +33,13 @@ export default Ember.Component.extend({
             this.sendAction("action");
         }
     },
-    wrapperClazz: Ember.computed(function() {
+    wrapperClazz: Ember.computed('wrapperClass', function() {
         return 'ember-password-toggle-wrapper ' + this.get('wrapperClass');
     }),
-    buttonClazz: Ember.computed(function() {
+    buttonClazz: Ember.computed('buttonClass', function() {
         return 'ember-password-toggle-btn ' + this.get('buttonClass');
     }),
-    inputClazz: Ember.computed(function() {
+    inputClazz: Ember.computed('inputClass', function() {
         return 'ember-password-toggle-input ' + this.get('inputClass') ;
     })
 });
