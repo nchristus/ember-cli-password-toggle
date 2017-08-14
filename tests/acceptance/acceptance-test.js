@@ -14,11 +14,11 @@ var PASSWORD_WRAPPER_ONE = 'div.ember-password-toggle-wrapper:eq(0)';
 var PASSWORD_WRAPPER_TWO = 'div.ember-password-toggle-wrapper:eq(1)';
 
 module('password toggle acceptance tests', {
-    setup: function() {
+    beforeEach() {
         application = startApp();
     },
-    teardown: function() {
-        Ember.run(application, application.destroy);
+    afterEach() {
+        Ember.run(application, 'destroy');
     }
 });
 
@@ -109,7 +109,7 @@ test('password-toggle allows custom classes to be passed in', function(assert) {
     });
 });
 
-test('password-toggle will show and hide the password when clicking the SHOW/HIDE button', function(assert) {
+test('password-toggle will show and hide the password when clicking the SHOW/HIDE button', function() {
     visit('/');
     andThen(function() {
         isPasswordInput('input.password1');
