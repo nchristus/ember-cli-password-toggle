@@ -11,11 +11,11 @@
     "test": "ember try:each"
   },
   "repository": {
-      "type": "git",
-      "url": "https://github.com/nchristus/ember-cli-password-toggle"
+    "type": "git",
+    "url": "https://github.com/nchristus/ember-cli-password-toggle"
   },
   "bugs": {
-      "url": "https://github.com/nchristus/ember-cli-password-toggle/issues"
+    "url": "https://github.com/nchristus/ember-cli-password-toggle/issues"
   },
   "engines": {
     "node": "^4.5 || 6.* || >= 7.*"
