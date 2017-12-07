@@ -1,45 +1,32 @@
 import Ember from 'ember';
+import layout from '../templates/components/password-toggle';
 
-var $ = Ember.$;
+const ternary = (keyName, trueValue, falseValue) => {
+    return Ember.computed(keyName, function() {
+        return this.get(keyName) ? trueValue : falseValue;
+    });
+};
 
 export default Ember.Component.extend({
-    didInsertElement: function() {
-        this.$('button').on('click', function() {
-            var text = $(this).text();
-            var $input = $(this).parent().find('input');
+    layout,
 
-            if (text === 'Show') {
-                $(this).text('Hide');
-                $input.attr('autocomplete', 'off');
-                $input.attr('autocorrect', 'off');
-                $input.attr('spellcheck', 'off');
-                $input.attr('autocapitalize', 'off');
-                $input.attr('type', 'text');
-            } else if (text === 'Hide') {
-                $(this).text('Show');
-                $input.removeAttr('autocomplete');
-                $input.removeAttr('autocorrect');
-                $input.removeAttr('spellcheck');
-                $input.removeAttr('autocapitalize');
-                $input.attr('type', 'password');
-            }
-        });
-        if(this.get('focus')) {
-            this.$('input').focus();
-        }
-    },
-    keyPress: function(event){
+    isTypeText: false,
+
+    autocomplete: ternary('isTypeText', 'off', null),
+    autocorrect: ternary('isTypeText', 'off', null),
+    spellcheck: ternary('isTypeText', false, null),
+    autocapitalize: ternary('isTypeText', 'off', null),
+    type: ternary('isTypeText', 'text', 'password'),
+
+    keyPress(event){
         if(event.keyCode === 13) {
             this.sendAction("action");
         }
     },
-    wrapperClazz: Ember.computed('wrapperClass', function() {
-        return 'ember-password-toggle-wrapper ' + this.get('wrapperClass');
-    }),
-    buttonClazz: Ember.computed('buttonClass', function() {
-        return 'ember-password-toggle-btn ' + this.get('buttonClass');
-    }),
-    inputClazz: Ember.computed('inputClass', function() {
-        return 'ember-password-toggle-input ' + this.get('inputClass') ;
-    })
+
+    actions: {
+        toggleInputType() {
+            this.toggleProperty('isTypeText');
+        }
+    }
 });
