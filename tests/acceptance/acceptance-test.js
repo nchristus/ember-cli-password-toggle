@@ -53,27 +53,26 @@ test('password-toggle test', function(assert) {
     andThen(function(){
         assert.equal(find(PASSWORD_BUTTON_ONE).text(), 'Hide');
         assert.equal(find(PASSWORD_INPUT_ONE).attr('type'), 'text');
-        assert.equal(find(PASSWORD_INPUT_ONE).attr('autocomplete'), 'off');
-        assert.equal(find(PASSWORD_INPUT_ONE).attr('autocorrect'), 'off');
-        assert.equal(find(PASSWORD_INPUT_ONE).attr('spellcheck'), 'off');
-        assert.equal(find(PASSWORD_INPUT_ONE).attr('autocapitalize'), 'off');
+        assert.equal(find(PASSWORD_INPUT_ONE).attr('autocomplete'), 'off', 'autocomplete is off');
+        assert.equal(find(PASSWORD_INPUT_ONE).attr('autocorrect'), 'off', 'autocorrect is off');
+        assert.equal(find(PASSWORD_INPUT_ONE).attr('spellcheck'), 'false', 'spellcheck is off');
+        assert.equal(find(PASSWORD_INPUT_ONE).attr('autocapitalize'), 'off', 'autocapitalize is off');
     });
 
     click(PASSWORD_BUTTON_ONE);
     andThen(function(){
         assert.equal(find(PASSWORD_BUTTON_ONE).text(), 'Show');
         assert.equal(find(PASSWORD_INPUT_ONE).attr('type'), 'password');
-        assert.equal(find(PASSWORD_INPUT_ONE).attr('autocomplete'), undefined);
-        assert.equal(find(PASSWORD_INPUT_ONE).attr('autocorrect'), undefined);
-        assert.equal(find(PASSWORD_INPUT_ONE).attr('spellcheck'), undefined);
-        assert.equal(find(PASSWORD_INPUT_ONE).attr('autocapitalize'), undefined);
+        assert.equal(find(PASSWORD_INPUT_ONE).attr('autocomplete'), undefined, 'autocomplete is undefined');
+        assert.equal(find(PASSWORD_INPUT_ONE).attr('autocorrect'), undefined, 'autocorrect is undefined');
+        assert.equal(find(PASSWORD_INPUT_ONE).attr('spellcheck'), undefined, 'spellcheck is undefined');
+        assert.equal(find(PASSWORD_INPUT_ONE).attr('autocapitalize'), undefined, 'autocapitalize is undefined');
     });
 });
 
 test('password-toggle allows custom inputId to be passed in', function(assert) {
     visit('/');
     andThen(function() {
-        assert.ok(find(PASSWORD_INPUT_ONE).attr('id').indexOf('ember') > -1);
         assert.equal(find(PASSWORD_INPUT_TWO).attr('id'), 'password');
     });
 });
