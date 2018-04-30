@@ -1,5 +1,6 @@
 import $ from 'jquery';
 import { get, computed } from '@ember/object';
+import { warn } from '@ember/debug';
 import Component from '@ember/component';
 
 export default Component.extend({
@@ -33,6 +34,7 @@ export default Component.extend({
       const actionToBubble = this.get('action');
       if (typeof actionToBubble === 'string') {
         /* eslint-disable */
+        warn('The ember-cli-password-toggle `action` should be a closure action', false, { id: 'ember-cli-password-toggle.action-type' });
         this.sendAction('action');
         /* eslint-enable */
       } else {
