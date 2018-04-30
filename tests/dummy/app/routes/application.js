@@ -1,13 +1,13 @@
-import Ember from 'ember';
+import Route from '@ember/routing/route';
+import EmberObject from '@ember/object';
+import { set } from '@ember/object';
 
-var ApplicationRoute = Ember.Route.extend({
-    model: function() {
-        return Ember.Object.create();
-    },
-    setupController: function (controller, model) {
-        controller.set("triggered", false);
-        controller.set("model", model);
-    }
+export default Route.extend({
+  model: function() {
+    return EmberObject.create();
+  },
+  setupController: function (controller, model) {
+    set(controller, 'triggered', false);
+    set(controller, 'model', model);
+  }
 });
-
-export default ApplicationRoute;

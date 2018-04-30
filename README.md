@@ -36,14 +36,13 @@ In order to prevent browsers from storing passwords when 'SHOW' is toggled, the 
 
 ## Running the unit tests
 ```sh
-npm install
-bower install
+yarn
 ember test
 ```
 
 ## License
 
-Copyright © 2016 Nick Christus
+Copyright © 2018 Nick Christus
 
 Licensed under the MIT License
 
