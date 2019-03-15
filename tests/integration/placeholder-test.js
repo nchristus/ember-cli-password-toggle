@@ -1,7 +1,7 @@
 import { module, test } from 'qunit';
 import hbs from 'htmlbars-inline-precompile';
 import { setupRenderingTest } from 'ember-qunit';
-import { render, find, findAll, triggerEvent } from '@ember/test-helpers';
+import { render, find, findAll } from '@ember/test-helpers';
 
 module('integration: placeholder test', function(hooks) {
   setupRenderingTest(hooks);
@@ -22,17 +22,5 @@ module('integration: placeholder test', function(hooks) {
     const selector = 'input.ember-password-toggle-input';
     assert.equal(findAll(selector).length, 1);
     assert.equal(find(selector).getAttribute('placeholder'), undefined);
-  });
-
-  test('closure actions are supported in addition to legacy ember actions', async function(assert) {
-    assert.expect(1);
-
-    this.set('foobar', () => {
-      assert.ok(true);
-    });
-
-    await render(hbs`{{password-toggle password=model.password action=(action foobar)}}`);
-
-    await triggerEvent('button', 'keypress', { keyCode: 13 });
   });
 });
