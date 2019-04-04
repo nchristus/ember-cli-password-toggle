@@ -1,5 +1,6 @@
 import $ from 'jquery';
 import { get, computed } from '@ember/object';
+import { isEmpty } from '@ember/utils';
 import { warn } from '@ember/debug';
 import Component from '@ember/component';
 
@@ -37,7 +38,7 @@ export default Component.extend({
         warn('The ember-cli-password-toggle `action` should be a closure action', false, { id: 'ember-cli-password-toggle.action-type' });
         this.sendAction('action');
         /* eslint-enable */
-      } else {
+      } else if (!isEmpty(actionToBubble)) {
         actionToBubble();
       }
     }
